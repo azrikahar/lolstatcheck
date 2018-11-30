@@ -53,7 +53,7 @@ window.chartColors = [
 ];
 
 function getChampionStats(latest_version){
-  var static_data_url = 'http://ddragon.leagueoflegends.com/cdn/' + latest_version + '/data/en_US/champion.json';
+  var static_data_url = 'https://ddragon.leagueoflegends.com/cdn/' + latest_version + '/data/en_US/champion.json';
   $.ajax({
       url: static_data_url,
       type: "GET",
