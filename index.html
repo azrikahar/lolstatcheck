@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>LoL StatCheck</title>
+    <!-- <link rel="shortcut icon" href="favicon.ico" type="image/vnd.microsoft.icon"> -->
+    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="plugin/chosen/chosen.min.css" type="text/css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.bundle.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="plugin/chosen/chosen.jquery.min.js"></script>
+  </head>
+  <body style="background-color:rgb(47, 54, 64)">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-transparent">
+      <a class="navbar-brand" href="#">LoL StatCheck</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <span id="patchversion" class="nav-link"></span>
+          </li>
+        </ul>
+        <!-- <form class="form-inline my-2 my-lg-0">
+          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form> -->
+      </div>
+    </nav>
+    <div class="container-fluid">
+      <div class="row mt-2">
+        <div class="col-sm-6">
+          <select id="ChampionList" data-placeholder="Select champions for comparison (Max: 8)" onchange="championSelected();">
+            <option value></option>
+          </select>
+          <p id="ChampionListAlert" class="text-danger"></p>
+          <button id="clearbutton" type="button" class="btn btn-info btn-sm mb-2" onclick="clearButton();" disabled>Clear Graph</button>
+        </div>
+        <div class="col-sm-6">
+          <div class="custom-control custom-checkbox custom-checkbox-inline">
+            <input type="checkbox" class="custom-control-input" id="customCheckHP" onchange="checkboxOnChange(this);" checked>
+            <label class="custom-control-label text-light" for="customCheckHP">HP</label>
+          </div>
+          <div class="custom-control custom-checkbox custom-checkbox-inline">
+            <input type="checkbox" class="custom-control-input" id="customCheckHPRegen" onchange="checkboxOnChange(this);" checked>
+            <label class="custom-control-label text-light" for="customCheckHPRegen">HP Regen</label>
+          </div>
+          <div class="custom-control custom-checkbox custom-checkbox-inline">
+            <input type="checkbox" class="custom-control-input" id="customCheckMP" onchange="checkboxOnChange(this);" checked>
+            <label class="custom-control-label text-light" for="customCheckMP">Mana/Energy</label>
+          </div>
+          <div class="custom-control custom-checkbox custom-checkbox-inline">
+            <input type="checkbox" class="custom-control-input" id="customCheckMPRegen" onchange="checkboxOnChange(this);" checked>
+            <label class="custom-control-label text-light" for="customCheckMPRegen">Mana/Energy Regen</label>
+          </div>
+          <div class="custom-control custom-checkbox custom-checkbox-inline">
+            <input type="checkbox" class="custom-control-input" id="customCheckAD" onchange="checkboxOnChange(this);" checked>
+            <label class="custom-control-label text-light" for="customCheckAD">Attack Damage</label>
+          </div>
+          <div class="custom-control custom-checkbox custom-checkbox-inline">
+            <input type="checkbox" class="custom-control-input" id="customCheckAS" onchange="checkboxOnChange(this);" checked>
+            <label class="custom-control-label text-light" for="customCheckAS">Attack Speed</label>
+          </div>
+          <div class="custom-control custom-checkbox custom-checkbox-inline">
+            <input type="checkbox" class="custom-control-input" id="customCheckArmor" onchange="checkboxOnChange(this);" checked>
+            <label class="custom-control-label text-light" for="customCheckArmor">Armor</label>
+          </div>
+          <div class="custom-control custom-checkbox custom-checkbox-inline">
+            <input type="checkbox" class="custom-control-input" id="customCheckMagicResist" onchange="checkboxOnChange(this);" checked>
+            <label class="custom-control-label text-light" for="customCheckMagicResist">Magic Resist</label>
+          </div>
+        </div>
+      </div>
+      <div id="container" style="">
+        <canvas id="canvas" class="chartjs-render-monitor" style="display: block;width:100%;height:100vh"></canvas>
+      </div>
+    </div>
+  </body>
+  <script src="js/main.min.js"></script>
+</html>
