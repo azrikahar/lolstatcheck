@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>LoL StatCheck</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.bundle.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+  </head>
+  <body style="background-color:rgb(47, 54, 64)">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-transparent">
+      <a class="navbar-brand" href="./">LoL StatCheck</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <span id="patchversion" class="nav-link">Patch 8.24</span>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./darkharvest-vs-electrocute.html">DH vs Electrocute</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <div class="container-fluid">
+      <div class="row mt-2">
+        <div class="col-sm-3">
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text text-light" style="background-color:#eb3b5a" id="inputGroup-sizing-ad">Bonus AD</span>
+            </div>
+            <input class="form-control" type="number" value="0" min="0" max="9999"
+              aria-label="InputAD"
+              aria-describedby="inputGroup-sizing-ad"
+              onkeyup="this.value=this.value.replace(/[^\d]+/,'');bonus_ad=this.value"
+              oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+              onchange="updateAD(this.value)"
+              maxlength="4"
+              id="ad-input">
+          </div>
+        </div>
+        <div class="col-sm-3">
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text text-light" style="background-color:#20bf6b" id="inputGroup-sizing-ap">AP</span>
+            </div>
+            <input class="form-control" type="number" value="0" min="0" max="9999"
+              aria-label="InputAP"
+              aria-describedby="inputGroup-sizing-ap"
+              onkeyup="this.value=this.value.replace(/[^\d]+/,'')"
+              oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+              onchange="updateAP(this.value)"
+              maxlength="4"
+              id="ap-input">
+          </div>
+        </div>
+        <div class="col-sm-3">
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text text-light" style="background-color:#3867d6" id="inputGroup-sizing-souls">Number of Souls (DH)</span>
+            </div>
+            <input class="form-control" type="number" value="0" min="0" max="9999"
+              aria-label="InputSouls"
+              aria-describedby="inputGroup-sizing-souls"
+              onkeyup="this.value=this.value.replace(/[^\d]+/,'')"
+              oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+              onchange="updateSouls(this.value)"
+              maxlength="4"
+              id="souls-input">
+          </div>
+        </div>
+      </div>
+      <div id="container" style="">
+        <canvas id="canvas" class="chartjs-render-monitor" style="display: block;width:100%;height:100vh"></canvas>
+      </div>
+    </div>
+  </body>
+  <script src="js/dh_vs_elec.js"></script>
+</html>
