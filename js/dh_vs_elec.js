@@ -124,7 +124,7 @@ var config = {
       xPadding: 10,
       yPadding: 10,
       itemSort: function(a, b, data){
-        return a.yLabel - b.yLabel
+        return b.yLabel - a.yLabel
       },
       callbacks: {
         title: function(tooltipItems, data) {
